@@ -1,0 +1,109 @@
+---
+title: "Counts of various wheeze/fever infection phenotypes "
+author: "Howard Tang"
+date: "2016-11-01"
+fontsize: 8pt
+output: pdf_document
+---
+
+# Definitions
+
+**Phenotypes:**
+
+- lri = wheeze OR rattle
+
+- wlri = wheeze AND lri 
+
+           = wheeze only = wari
+
+- fari = fever
+
+- flri = fever AND lri 
+
+           = fever AND (wheeze OR rattle)
+
+- wflri = wheeze AND fever AND lri 
+
+           = wheeze AND fever = wfari
+
+- sari = fever OR wheeze
+
+- slri = (fever OR wheeze) AND lri 
+
+           = (fever AND wheeze) OR (fever AND rattle) OR wheeze
+
+**Timepoints:**
+
+- 1,2, etc. = age 0 to 1y, 1 to 2y etc.
+
+- 425 = age 0 to 425d
+
+# Total number of events, within time point
+
+```{r, echo=F, eval=T}
+load("~/Documents/PhD/Project - CAS/S0_Prelim_data_check_clean/2016-10-26/output/2016-11-01_vir_respchart_var_gen.Rdata")
+with(stat_long_sum.df, data.frame(time, lri, wlri, fari, flri, wflri, sari, slri))
+```
+
+# Mean number of events per individual, within timepoint
+
+```{r, echo=F, eval=T}
+with(stat_long_mean.df, data.frame(time, lri, wlri, fari, flri, wflri, sari, slri))
+```
+
+# Histograms
+
+```{r, echo=F, eval=T, warning=F}
+library(ggplot2)
+theme_set(theme_bw())
+
+virus_resp_sum_lri.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of LRIs in time period") +
+	labs(x="Number of infections", y="Count") + xlim(c(-1,8))
+
+virus_resp_sum_wlri.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of WLRIs in time period") +
+	labs(x="Number of infections", y="Count")
+
+virus_resp_sum_fari.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of FARIs in time period") +
+	labs(x="Number of infections", y="Count") + xlim(c(-1,11))
+
+virus_resp_sum_flri.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of FLRIs in time period") +
+	labs(x="Number of infections", y="Count")
+
+virus_resp_sum_wlri.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of WLRIs in time period") +
+	labs(x="Number of infections", y="Count")
+
+virus_resp_sum_wflri.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of wheezy and febrile LRIs in time period") +
+	labs(x="Number of infections", y="Count")
+
+virus_resp_sum_sari.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of SARIs (wheeze or fever) in time period") +
+	labs(x="Number of infections", y="Count")
+
+virus_resp_sum_slri.df %>%
+	filter(age!="0-1y", age!="3-4y", age!="4-5y") %>%
+	ggplot(aes(x=frequency)) + geom_histogram(binwidth=1) + facet_grid(.~age) +
+	ggtitle("Number of SLRIs (wheeze or fever AND LRI) in time period") +
+	labs(x="Number of infections", y="Count")
+
+```
+

@@ -1,23 +1,5 @@
 # Readme - C0 - Data quality control
 
-## 2017-08-04
-
-Contains attempts to clean CAS datasets and harmonise phenotypes so that they
-are (somewhat) internally-consistent with each other.
-
-The most troublesome aspect of data cleaning and quality control concerns
-the viral sampling and respiratory infection phenotypes. This is because of:
-
-- Differences in viral typing methods (Johnson vs. Gern Lab for Year 1 samples)
-- Differences in definition of respiratory infection phenotypes (e.g. 
-between CAS and COAST) 
-
-There will be a meeting at some stage in the near feature to try to get
-a set of consensus phenotypes out, that *everyone* (Inouye Lab and Telethon Labs) 
-can use. 
-
-# 2026-10-30
-
 ## Main scripts
 
 In order:

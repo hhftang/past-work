@@ -73,7 +73,7 @@ Located in `/bash_scripts/`. All scripts are designed to run on the HPC via Slur
 | `dada_simple.sh` | Simplified DADA2 (single sample, no array) | — | — |
 | `filthuman.sh` |  Remove human reads via BLAST 97% identity + 97% alignment (array: 1-38, max 6 parallel) | `dada.sh` | `-filt-table.qza` |
 
-#### D. Merge & Classification
+#### C. Merge & Classification
 
 | Script | Purpose | Dependencies | Output |
 | ------ | ------- | ------------ | ------ |
@@ -82,7 +82,7 @@ Located in `/bash_scripts/`. All scripts are designed to run on the HPC via Slur
 | `classify.sh` |  Taxonomic classification using Naive Bayes classifier trained on 16S reference (Greengenes 13_8 99% OTUs) + taxa barplot | `merge_output.sh` | `taxonomy-cas.qza`, `taxa-barplots-cas.qzv` |
 | `export_biom.sh` | Export QIIME2 artifacts → BIOM with taxonomy for R and phyloseq | `merge_output.sh`, `classify.sh` | `taxonomy.tsv`, `feature-table-taxa.biom` |
 
-#### E. Other Scripts
+#### D. Other Scripts
 
 | Script | Purpose | Dependencies | Output |
 | ------ | ------- | ------------ | ------ |

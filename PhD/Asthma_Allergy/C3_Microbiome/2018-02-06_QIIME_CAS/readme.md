@@ -1,4 +1,4 @@
-# Readme - QIIME2 in CAS
+# Readme - CAS QIIME2 and Microbiome Analysis Pipeline
 
 > **Project:** CAS (Childhood Asthma Study) microbiome analysis  
 > **Data:** 16S rRNA sequencing (nasopharyngeal samples), human reference genome (for removing reads)  
